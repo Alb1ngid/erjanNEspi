@@ -1,6 +1,6 @@
 import random
 
-from colorama import Fore
+from colorama import Fore, Back
 def choose_word():
     words = ['python', 'hangman', 'challenge', 'programming', 'algorithm']
     return random.choice(words)
@@ -94,13 +94,13 @@ def play_game():
         guess = input("Введите букву или слово целиком: ").lower()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print(Fore.BLUE+"Вы уже угадывали букву:", guess, ".")
+                print(Fore.BLUE+"Вы уже угадывали букву:", guess, ".", Fore.RESET)
             elif guess not in word:
-                print(Fore.RED+"Буквы", guess, "нет в слове.")
+                print(Fore.RED+"Буквы", guess, "нет в слове.", Fore.RESET)
                 tries -= 1
                 guessed_letters.append(guess)
             else:
-                print(Fore.GREEN + "Отлично! Буква", guess, "есть в слове!")
+                print(Fore.GREEN + "Отлично! Буква", guess, "есть в слове!", Fore.RESET)
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -111,9 +111,9 @@ def play_game():
                     guessed = True
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
-                print(Fore.BLUE + "Вы уже угадывали слово", guess, '.')
+                print(Fore.BLUE + "Вы уже угадывали слово", guess, '.', Fore.RESET)
             elif guess != word:
-                print(Fore.RED+"Слово", guess, "не верно.")
+                print(Fore.RED+"Слово", guess, "не верно.", Fore.RESET)
                 tries -= 1
                 guessed_words.append(guess)
             else:
