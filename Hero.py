@@ -1,6 +1,6 @@
 import random
 
-
+from colorama import Fore
 def choose_word():
     words = ['python', 'hangman', 'challenge', 'programming', 'algorithm']
     return random.choice(words)
@@ -94,13 +94,13 @@ def play_game():
         guess = input("Введите букву или слово целиком: ").lower()
         if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
-                print(f"Вы уже угадывали букву {guess}.")
+                print(Fore.BLUE+"Вы уже угадывали букву:", guess, ".")
             elif guess not in word:
-                print(f"Буквы {guess} нет в слове.")
+                print(Fore.RED+"Буквы", guess, "нет в слове.")
                 tries -= 1
                 guessed_letters.append(guess)
             else:
-                print(f"Отлично! Буква {guess} есть в слове!")
+                print(Fore.GREEN + "Отлично! Буква", guess, "есть в слове!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
                 indices = [i for i, letter in enumerate(word) if letter == guess]
@@ -111,9 +111,9 @@ def play_game():
                     guessed = True
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
-                print(f"Вы уже угадывали слово {guess}.")
+                print(Fore.BLUE + "Вы уже угадывали слово", guess, '.')
             elif guess != word:
-                print(f"Слово {guess} не верно.")
+                print(Fore.RED+"Слово", guess, "не верно.")
                 tries -= 1
                 guessed_words.append(guess)
             else:
@@ -127,9 +127,9 @@ def play_game():
         print("\n")
 
     if guessed:
-        print(f"Поздравляем! Вы угадали слово {word}!")
+        tprint("You Win!", font="random")
     else:
-        print(f"Вы не угадали слово. Загаданное слово было {word}. Возможно, повезет в следующий раз!")
+        tprint("Game Over", font="random")
 
 
 if __name__ == "__main__":
