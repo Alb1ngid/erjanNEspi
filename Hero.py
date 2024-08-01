@@ -1,14 +1,15 @@
 import random
 
-from colorama import Fore, Back
+from colorama import Fore, Back, Style
 def choose_word():
     words = ['python', 'hangman', 'challenge', 'programming', 'algorithm']
     return random.choice(words)
 
 
 def display_hangman(tries):
+    colors = [Fore.YELLOW, Fore.BLACK, Fore.LIGHTBLACK_EX, Fore.LIGHTCYAN_EX, Fore.BLUE, Fore.LIGHTMAGENTA_EX, Fore.LIGHTYELLOW_EX]
     stages = [
-        """
+        f'{colors[0]}'"""
            ------
            |    |
            |    O
@@ -16,8 +17,8 @@ def display_hangman(tries):
            |   / \\
            |
         -----
-        """,
-        """
+        """ + Fore.RESET ,
+        f'{colors[1]}'"""
            ------
            |    |
            |    O
@@ -25,8 +26,8 @@ def display_hangman(tries):
            |   / 
            |
         -----
-        """,
-        """
+        """ + Fore.RESET,
+        f'{colors[2]}'"""
            ------
            |    |
            |    O
@@ -34,8 +35,8 @@ def display_hangman(tries):
            |    
            |
         -----
-        """,
-        """
+        """ + Fore.RESET,
+        f'{colors[3]}'"""
            ------
            |    |
            |    O
@@ -43,8 +44,8 @@ def display_hangman(tries):
            |    
            |
         -----
-        """,
-        """
+        """ + Fore.RESET,
+        f'{colors[4]}'"""
            ------
            |    |
            |    O
@@ -52,8 +53,8 @@ def display_hangman(tries):
            |    
            |
         -----
-        """,
-        """
+        """ + Fore.RESET,
+        f'{colors[5]}'"""
            ------
            |    |
            |    O
@@ -61,7 +62,7 @@ def display_hangman(tries):
            |    
            |
         -----
-        """,
+        """ + Fore.RESET,
         """
            ------
            |    |
