@@ -120,6 +120,7 @@ def play_game():
             else:
                 guessed = True
                 word_completion = word
+
         else:
             print("Некорректный ввод.")
 
